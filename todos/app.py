@@ -2,7 +2,7 @@ import os
 import sqlite3
 from contextlib import closing
 
-from flask import Flask, g, render_template, send_from_directory
+from flask import Flask, g, redirect, render_template, request, send_from_directory
 
 from todos.todo import Todo
 
@@ -50,6 +50,16 @@ def index():
             res = cur.execute("SELECT id, description FROM todos")
             todos = [Todo(row[0], row[1]) for row in res.fetchall()]
     return render_template("index.html", todos=todos)
+
+
+@app.post("/add")
+def add_todo():
+    description = request.form["description"]
+    with closing(get_connection()) as conn:
+        with closing(conn.cursor()) as cur:
+            cur.execute("INSERT INTO todos(description) VALUES(?)", (description,))
+        conn.commit()
+    return redirect("/")
 
 
 def start(debug=False):

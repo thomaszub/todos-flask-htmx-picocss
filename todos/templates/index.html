@@ -29,6 +29,15 @@
                 {% include "_partials/todo.html" %}
                 {% endfor %}
             </fieldset>
+            <legend><strong>Add new To-Do</strong></legend>
+            <form action="/add" method="post">
+                <div style="display: flex; align-items: center; max-width: 512px;">
+                    <div style="width: 62px;">
+                        <button type="submit">&#10133;</button>
+                    </div>
+                    <input name="description" type="text" placeholder="Description" />
+                </div>
+            </form>
         </section>
     </main>
     <footer class="container">
