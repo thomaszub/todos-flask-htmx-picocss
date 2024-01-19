@@ -1,2 +1,4 @@
 /node_modules
 /todos/static/assets
+/todos.db
+/todos/__pycache__
