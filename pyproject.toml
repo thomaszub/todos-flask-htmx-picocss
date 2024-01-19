@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "todos"
+version = "0.1.0"
+description = ""
+authors = ["Thomas Zub <thomas.zub@outlook.de>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask = "^3.0.1"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.13"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
